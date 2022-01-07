@@ -2,7 +2,6 @@
   <div class="home">
       <v-tag-form />
       <v-card />
-      <v-card />
   </div>
 </template>
 
@@ -13,7 +12,7 @@ export default {
   name: 'Home',
   components: {
       VCard,
-      VTagForm
+      VTagForm 
   }
 }
 </script>

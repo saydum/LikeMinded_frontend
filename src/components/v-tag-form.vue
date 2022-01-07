@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="v-tag-form">
     <b-form-tags v-model="value" no-outer-focus class="mb-2">
       <template v-slot="{ tags, inputAttrs, inputHandlers, addTag, removeTag }">
         <b-input-group aria-controls="my-custom-tags-list">
@@ -37,7 +37,9 @@
               variant="link"
               size="sm"
               :aria-controls="`my-custom-tags-tag_${tag.replace(/\s/g, '_')}_`"
-            >remove</b-button>
+            >
+            <b-icon class="icon" icon="x-circle" variant="danger"></b-icon>
+            </b-button>
           </b-card>
         </ul>
       </template>
@@ -55,3 +57,16 @@
     }
   }
 </script>
+
+<style>
+    .v-tag-form {
+        margin-top: 30px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    .icon:hover {
+        color: #fff;
+        background-color: rgb(235, 94, 94);
+        border-radius: 100%;
+    }
+</style>

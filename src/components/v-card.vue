@@ -1,8 +1,18 @@
 <template>
-    <div class="v-card " >
-        <div v-for="item in info">
-        {{ item.description }}
-        </div>
+    <div class="v-card">
+        <b-card class="card" v-for="topic in topics">
+            <div>
+                <b-img class="img-card" v-bind="mainProps" :src="topic.user.avatar" rounded="circle" alt="Circle image"></b-img>
+                <b-icon class="status-icon" icon="circle-fill"></b-icon>
+                {{topic.user.name}}
+            </div>
+            <b-card-text class="text-card">
+                {{ topic.description }}
+            </b-card-text>
+
+
+             <a class="btn-card btn outline-success" :href="'https://vk.com/write' + topic.user.user_id">Написать</a>
+        </b-card>
     </div>
 </template>
 
@@ -15,19 +25,19 @@ export default {
     name: 'v-card',
     data() {
         return {
-            info : null 
+            topics : null,
+            mainProps: {
+                width: 74,
+                height: 74,
+            }
         }
     },
-    // computed: {
-    //     ...mapGetters([
-    //         console.log(USER),
-    //         'users',
-    //     ])
-    // },
     mounted() {
         axios
-        .get('http://likeminded.lo/api/topic/')
-        .then(response => (this.info = response));
+        .get('http://likeminded.lo/api/topics/')
+        .then(response => (
+            this.topics = response.data
+        ));
     }
 }
 </script>
